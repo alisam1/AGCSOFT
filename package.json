@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cycle": "^1.0.3",
+    "react-hook-form": "^7.29.0"
+  }
+}
