@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useRef, Children} from 'react';
 import FormNew from './components/FormNew/FormNew';
 import TableData from './components/TableForm/TableForm';
 
@@ -29,8 +29,10 @@ function App() {
     return setTable(items)
   };
 
-  const deleteTable = () => {
-    return setTable([])
+  const deleteTable = (index) => {
+    const items = copyTable
+    items.splice(index, 1)
+    return setTable(items)
   };
 
   console.log(copyTable)
@@ -43,10 +45,11 @@ function App() {
       <FormNew addContact={addContact} />
       <TableData ref={ref} columns={columns} contacts={listData} actions />
       <div id='copyTable'>
-        <button onClick={deleteTable}>Delete</button>
         {copyTable.map((item,index) => {
-          console.log(item.children)
-          return <div key={index}>{item}</div>
+          return <div>
+                    <button onClick={deleteTable}>Delete</button>
+                    <div dangerouslySetInnerHTML={{__html: `${item.outerHTML}`}}></div>
+                </div>
         })}
       </div>
     </>
