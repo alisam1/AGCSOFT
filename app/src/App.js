@@ -1,6 +1,7 @@
-import React, {useState, useRef, Children} from 'react';
+import React, {useState} from 'react';
 import FormNew from './components/FormNew/FormNew';
 import TableData from './components/TableForm/TableForm';
+import styles from './App.module.scss';
 
 const data = [];
 
@@ -11,6 +12,7 @@ function App() {
     { field: 'lastName', fieldName: 'Surname' },
     { field: 'age', fieldName: 'Age' },
     { field: 'select', fieldName: 'City' },
+    { field: 'choise', fieldName: '' },
   ];
 
   const [listData, updatelistData] = useState(data);
@@ -19,7 +21,6 @@ function App() {
   const addContact = (item) => {
     const items = [...listData, item]
     updatelistData(items)
-    console.log(listData)
   };
 
   const ref = React.createRef();
@@ -30,27 +31,30 @@ function App() {
   };
 
   const deleteTable = (index) => {
-    const items = copyTable
+    const items = [...copyTable];
     items.splice(index, 1)
     return setTable(items)
   };
 
-  console.log(copyTable)
-
-
-
   return (
     <>
-      <button onClick={addClick}>Copy</button>
       <FormNew addContact={addContact} />
-      <TableData ref={ref} columns={columns} contacts={listData} actions />
-      <div id='copyTable'>
-        {copyTable.map((item,index) => {
-          return <div>
-                    <button onClick={deleteTable}>Delete</button>
-                    <div dangerouslySetInnerHTML={{__html: `${item.outerHTML}`}}></div>
-                </div>
-        })}
+      <div className={styles.container}>
+        <div className={styles.copy__buttons}>
+          <button className={styles.copy__add} onClick={addClick}>Copy table</button>
+        </div>
+        <TableData ref={ref} columns={columns} contacts={listData} actions />
+        <div className='copy' id='copyTable'>
+          {copyTable.map((item,index) => {
+            return <div key={index * Math.random()}>
+                      <div className={styles.copy__buttons}>
+                        <button className={styles.copy__add} onClick={addClick}>Copy table</button>
+                        <button className={styles.copy__delete} onClick={deleteTable}></button>
+                      </div>
+                      <div key={index} dangerouslySetInnerHTML={{__html: `${item.outerHTML}`}}></div>
+                  </div>
+          })}
+        </div>
       </div>
     </>
   );

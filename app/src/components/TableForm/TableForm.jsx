@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Table } from "react-bootstrap";
-import './TableForm.styles.scss';
+import styles from './TableForm.module.scss';
 
 const UserList = React.forwardRef(({contacts, actions, columns}, ref) => {
 
@@ -117,21 +117,21 @@ const UserList = React.forwardRef(({contacts, actions, columns}, ref) => {
             }
           </td>
           {actions &&
-          <td>
+          <td className={styles.buttons}>
             { isEditMode && rowIDToEdit === row.id
-              ? <button onClick={ () => handleSaveRowChanges() } className='custom-table__action-btn' disabled={!editedRow}>
-                Edit
+              ? <button onClick={ () => handleSaveRowChanges() }  className={styles.button + ' ' + styles.button__agree} disabled={!editedRow}>
+                Agree
               </button>
-              : <button  onClick={ () => handleEdit(row.id) } className='custom-table__action-btn'>
-                Save
+              : <button  onClick={ () => handleEdit(row.id) }  className={styles.button + ' ' + styles.button__edit}>
+                Edit
               </button>
             }
 
             { isEditMode && rowIDToEdit === row.id
-              ? <button onClick={() => handleCancelEditing()} className='custom-table__action-btn'>
-                Save
+              ? <button onClick={() => handleCancelEditing()} className={styles.button + ' ' + styles.button__edit}>
+                Edit
               </button>
-              : <button onClick={() => handleRemoveRow(row.id)} className='custom-table__action-btn'>
+              : <button onClick={() => handleRemoveRow(row.id)} className={styles.button + ' ' + styles.button__delete}>
                 Delete
               </button>
             }

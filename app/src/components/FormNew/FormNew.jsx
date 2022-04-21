@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './FormNew.styles.scss';
+import styles from './FormNew.module.scss';
 
 export default function UserForm({addContact}) {
 
@@ -23,7 +23,7 @@ export default function UserForm({addContact}) {
 
   return (
     <div className="container">
-      <form className="form" onSubmit={handleSubmit}> 
+      <form className={styles.form} onSubmit={handleSubmit}> 
       <div>
           <input
             type="number"
@@ -71,7 +71,7 @@ export default function UserForm({addContact}) {
              </select>
         </div>
         <div>
-          <button>Add</button>
+          <button disabled={!contactInfo.id || !contactInfo.firstName || !contactInfo.lastName ||!contactInfo.age || !contactInfo.select}>Add</button>
         </div>
       </form>
     </div>
