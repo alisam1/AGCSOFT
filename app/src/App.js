@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import FormNew from './components/FormNew/FormNew';
-import TableData from './components/TableForm/TableForm';
+import Form from './components/Form/Form';
+import TableData from './components/Table/Table';
 import styles from './App.module.scss';
 
 const data = [];
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <FormNew addContact={addContact} />
+      <Form addContact={addContact} />
       <div className={styles.container}>
         <div className={styles.copy__buttons}>
           <button className={styles.copy__add} onClick={addClick}>Copy table</button>

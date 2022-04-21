@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Table } from "react-bootstrap";
-import styles from './TableForm.module.scss';
+import styles from './Table.module.scss';
 
 const UserList = React.forwardRef(({contacts, actions, columns}, ref) => {
 
