@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styles from './Form.module.scss';
+import Form from 'react-bootstrap/Form'
+import Select from 'react-select'
+
 
 export default function UserForm({addContact}) {
 
@@ -20,6 +23,13 @@ export default function UserForm({addContact}) {
     addContact(contactInfo);
     setContactInfo({ id: "", firstName: "", lastName: "", age: "",  select: ""});
   };
+
+  const data = [
+    {value: 'Riga', label: 'Riga', name: 'Riga'},
+    {value: 'Daugavpils', label: 'Daugavpils', name: 'Daugavpils'},
+    {value: 'Jūrmala', label: 'Daugavpils',  name: 'Jūrmala'},
+    {value: 'Ventspils', label: 'Daugavpils', name: 'Ventspils'},
+  ]
 
   return (
     <div className="container">
@@ -63,12 +73,12 @@ export default function UserForm({addContact}) {
           />
         </div>
         <div>
-            <select name="select" value={contactInfo.select} onChange={handleChange}>
-                <option value='Riga'>Riga</option>
-                <option value='Daugavpils'>Daugavpils</option>
-                <option value='Jūrmala'>Jūrmala</option>
-                <option value='Ventspils'>Ventspils</option>
-             </select>
+          <Form.Select name="select" value={contactInfo.select} onChange={handleChange}  aria-label="Default select example">
+            {
+                data.map(item  => {
+                  return <option key={item.value}>{ item.name }</option>
+                })}
+          </Form.Select>
         </div>
         <div>
           <button disabled={!contactInfo.id || !contactInfo.firstName || !contactInfo.lastName ||!contactInfo.age || !contactInfo.select}>Add</button>

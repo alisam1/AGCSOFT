@@ -58,7 +58,7 @@ const UserList = React.forwardRef(({contacts, actions, columns}, ref) => {
   }
 
   return (
-      <Table ref={ref} striped bordered hover>
+      <Table ref={ref}>
       <thead>
       <tr>
         {columns.map((column) => {
