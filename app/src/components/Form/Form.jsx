@@ -4,7 +4,7 @@ import Select from 'react-select'
 
 const selectStyles = {
   control: styles => ({ ...styles, backgroundColor: 'white' }),
-  option: (styles, { isFocused, isSelected }) => {
+  option: (styles, { isFocused }) => {
     return {
       ...styles,
       width: 90 + '%',
