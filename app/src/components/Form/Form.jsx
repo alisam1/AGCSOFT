@@ -34,9 +34,7 @@ export default function UserForm({addContact}) {
   });
 
   const handleChange = (event) => {
-    console.log('event', event)
     const itemField = event.target ? {[event.target.name]: event.target.value} : {select: event.name};
-    console.log('itemField', itemField)
     setContactInfo({ ...contactInfo, ...itemField });
   };
   const handleSubmit = (event) => {
