@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from './Form.module.scss';
 import Select from 'react-select'
 
-const colourStyles = {
+const selectStyles = {
   control: styles => ({ ...styles, backgroundColor: 'white' }),
   option: (styles, { isFocused, isSelected }) => {
     return {
@@ -23,7 +23,6 @@ const colourStyles = {
 
 
 export default function UserForm({addContact}) {
-  
 
   const [contactInfo, setContactInfo] = useState({
     id: "",
@@ -92,7 +91,7 @@ export default function UserForm({addContact}) {
           />
         </div>
         <div>
-           <Select name="select" styles={colourStyles} className={styles.select} value={contactInfo.select.name} onChange={handleChange} options={data} />
+           <Select name="select" styles={selectStyles} className={styles.select} value={contactInfo.select.name} onChange={handleChange} options={data} />
         </div>
 
         <div>
