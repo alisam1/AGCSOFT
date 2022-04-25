@@ -1,7 +1,6 @@
 .form {
     width: 280px;
     height: auto;
-    background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     margin: 0 auto;
@@ -10,16 +9,23 @@
     padding: 20px;
 
     input {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #000;
+        opacity: 1;
         width: 100%;
-        background: #FFFFFF;
         border: 1px solid #E6ECEF;
         box-sizing: border-box;
         border-radius: 4px;
-        padding-top: 14px;
-        padding-left: 14px;
-        padding-bottom: 14px;
+        padding: 14px;
         margin-bottom: 16px;
         outline: none;
+    }
+
+    input::placeholder {
+        color: #868A8D;
     }
 
     button {
@@ -47,6 +53,11 @@
 }
 
 .select {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #868A8D;
     margin-bottom: 16px;
     outline: none;
 }

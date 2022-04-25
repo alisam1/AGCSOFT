@@ -2,8 +2,14 @@ import { useState } from "react";
 import styles from './Form.module.scss';
 import Select from 'react-select'
 
+
 const selectStyles = {
   control: styles => ({ ...styles, backgroundColor: 'white' }),
+  dropdownIndicator: (base, { isFocused }) => ({
+    ...base,
+    color: "#868A8D",
+    transform: isFocused ? 'rotate(180deg)' : 'rotate(0deg)'
+  }),
   option: (styles, { isFocused }) => {
     return {
       ...styles,
@@ -91,7 +97,7 @@ export default function UserForm({addContact}) {
           />
         </div>
         <div>
-           <Select name="select" styles={selectStyles} className={styles.select} value={contactInfo.select.name} onChange={handleChange} options={data} />
+           <Select name="select" placeholder="City" styles={selectStyles} className={styles.select} value={contactInfo.select.name} onChange={handleChange} options={data} />
         </div>
 
         <div>
