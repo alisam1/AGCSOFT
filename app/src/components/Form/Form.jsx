@@ -15,9 +15,11 @@ export default function UserForm({addContact}) {
   });
 
   const handleChange = (event) => {
-    setContactInfo({ ...contactInfo, [event.target.name]: event.target.value });
+    console.log('event', event)
+    const itemField = event.target ? {[event.target.name]: event.target.value} : {select: event.name};
+    console.log('itemField', itemField)
+    setContactInfo({ ...contactInfo, ...itemField });
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     addContact(contactInfo);
@@ -25,11 +27,11 @@ export default function UserForm({addContact}) {
   };
 
   const data = [
-    {value: 'Riga', label: 'Riga', name: 'Riga'},
+    {value:  "Riga", label: "Riga", name: "Riga"},
     {value: 'Daugavpils', label: 'Daugavpils', name: 'Daugavpils'},
-    {value: 'Jūrmala', label: 'Daugavpils',  name: 'Jūrmala'},
-    {value: 'Ventspils', label: 'Daugavpils', name: 'Ventspils'},
-  ]
+    {value: 'Jūrmala', label: 'Jūrmala',  name: 'Jūrmala'},
+    {value: 'Ventspils', label: 'Ventspils', name: 'Ventspils'},
+  ];
 
   return (
     <div className="container">
@@ -73,13 +75,9 @@ export default function UserForm({addContact}) {
           />
         </div>
         <div>
-          <Form.Select name="select" value={contactInfo.select} onChange={handleChange}  aria-label="Default select example">
-            {
-                data.map(item  => {
-                  return <option key={item.value}>{ item.name }</option>
-                })}
-          </Form.Select>
+           <Select name="select" className={styles.select} value={contactInfo.select.name} onChange={handleChange} options={data} />
         </div>
+
         <div>
           <button disabled={!contactInfo.id || !contactInfo.firstName || !contactInfo.lastName ||!contactInfo.age || !contactInfo.select}>Add</button>
         </div>
