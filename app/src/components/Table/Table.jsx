@@ -58,7 +58,7 @@ const UserList = React.forwardRef(({contacts, actions, columns}, ref) => {
   }
 
   return (
-      <Table ref={ref}>
+      <table ref={ref}>
       <thead>
       <tr>
         {columns.map((column) => {
@@ -140,7 +140,7 @@ const UserList = React.forwardRef(({contacts, actions, columns}, ref) => {
         </tr>
       })}
       </tbody>
-    </Table>
+    </table>
     );
 });
 
