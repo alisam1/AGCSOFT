@@ -1,10 +1,29 @@
 import { useState } from "react";
 import styles from './Form.module.scss';
-import Form from 'react-bootstrap/Form'
 import Select from 'react-select'
+
+const colourStyles = {
+  control: styles => ({ ...styles, backgroundColor: 'white' }),
+  option: (styles, { isFocused, isSelected }) => {
+    return {
+      ...styles,
+      width: 90 + '%',
+      margin: '0 auto',
+      padding: 14 + 'px',
+      paddingLeft: 0,
+      backgroundColor: '#FFF',
+      color: isFocused ? '#212229' : '#868A8D',
+      fontWeight: isFocused ? 700 : 400,
+      cursor: 'pointer',
+      borderBottom: '1px solid #E6ECEF',
+    };
+  },
+};
+
 
 
 export default function UserForm({addContact}) {
+  
 
   const [contactInfo, setContactInfo] = useState({
     id: "",
@@ -75,7 +94,7 @@ export default function UserForm({addContact}) {
           />
         </div>
         <div>
-           <Select name="select" className={styles.select} value={contactInfo.select.name} onChange={handleChange} options={data} />
+           <Select name="select" styles={colourStyles} className={styles.select} value={contactInfo.select.name} onChange={handleChange} options={data} />
         </div>
 
         <div>
